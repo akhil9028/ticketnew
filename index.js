@@ -287,24 +287,24 @@ app.listen(port, () => {
 //   res.sendStatus(200);
 // });
 
-var currentDate = new Date();
+// var currentDate = new Date();
 
-var dateString = currentDate.toLocaleDateString("en-US", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-var timeString = currentDate.toLocaleTimeString("en-US");
+// var dateString = currentDate.toLocaleDateString("en-US", {
+//   weekday: "long",
+//   year: "numeric",
+//   month: "long",
+//   day: "numeric",
+// });
+// var timeString = currentDate.toLocaleTimeString("en-US");
 
-var validTime = new Date(currentDate.getTime() + 3 * 60 * 60 * 1000);
-var hours = validTime.getHours();
-var minutes = validTime.getMinutes();
-var ampm = hours >= 12 ? "PM" : "AM";
-hours = hours % 12;
-hours = hours ? hours : 12; // Handle midnight
-minutes = minutes < 10 ? "0" + minutes : minutes;
-var formattedTime = hours + ":" + minutes + " " + ampm;
+// var validTime = new Date(currentDate.getTime() + 3 * 60 * 60 * 1000);
+// var hours = validTime.getHours();
+// var minutes = validTime.getMinutes();
+// var ampm = hours >= 12 ? "PM" : "AM";
+// hours = hours % 12;
+// hours = hours ? hours : 12; // Handle midnight
+// minutes = minutes < 10 ? "0" + minutes : minutes;
+// var formattedTime = hours + ":" + minutes + " " + ampm;
 
 app.post("/passTicket", async (req, res) => {
   console.log("hsdfhsadfashjfd");
@@ -312,6 +312,19 @@ app.post("/passTicket", async (req, res) => {
   console.log(ticc);
   console.log(iiddd);
   console.log(prrr);
+  // console.log(dateString);
+  // console.log(timeString);
+
+  const currentDate = new Date();
+
+  const dateString = currentDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const timeString = currentDate.toLocaleTimeString("en-US");
+
   console.log(dateString);
   console.log(timeString);
 
