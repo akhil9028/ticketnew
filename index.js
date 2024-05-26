@@ -38,7 +38,6 @@ const newSchemas = new mongoose.Schema({
   // status: String,
   Bus_id: Number,
   Date: String,
-  Time: String,
   Price: Number,
   Tickets: Number,
   Start: String,
@@ -244,68 +243,7 @@ app.get("/route5.html", (req, res) => {
 app.listen(port, () => {
   console.log("Server is working");
 });
-
-// app.post("/passTicket.html", async (req, res) => {
-//   const { event, payload } = req.body;
-
-//   // Check the event type
-//   switch (event) {
-//     case "payment.captured":
-//       console.log("hellllllo ak");
-//       console.log(payload);
-//       console.log("event" + event);
-
-//       console.log("payloadddddddddd " + payload.payment.entity.amount);
-
-//       await handlePaymentCaptured(payload);
-
-//       break;
-//     case "payment.failed":
-//       // await handlePaymentFailed(payload);
-//       console.log("skdfjhadsfdfasd");
-//       break;
-//     // Add more cases for other events as needed
-//   }
-
-//   async function handlePaymentCaptured(payload) {
-//     const { payment_id, amount } = payload;
-
-//     const msssgdata = {
-//       // order_id: 7942793,
-//       // payment_id: 777777,
-//       // amount: 650,
-//       // tickets: 8,
-//       order_id: payload.payment.entity.order_id,
-//       payment_id: payload.payment.entity.id,
-//       amount: payload.payment.entity.amount / 100,
-//     };
-//     msg.create(msssgdata);
-
-//     console.log("hell");
-
-//   }
-//   res.sendStatus(200);
-// });
-
-// var currentDate = new Date();
-
-// var dateString = currentDate.toLocaleDateString("en-US", {
-//   weekday: "long",
-//   year: "numeric",
-//   month: "long",
-//   day: "numeric",
-// });
-// var timeString = currentDate.toLocaleTimeString("en-US");
-
-// var validTime = new Date(currentDate.getTime() + 3 * 60 * 60 * 1000);
-// var hours = validTime.getHours();
-// var minutes = validTime.getMinutes();
-// var ampm = hours >= 12 ? "PM" : "AM";
-// hours = hours % 12;
-// hours = hours ? hours : 12; // Handle midnight
-// minutes = minutes < 10 ? "0" + minutes : minutes;
-// var formattedTime = hours + ":" + minutes + " " + ampm;
-
+  
 app.post("/passTicket", async (req, res) => {
   console.log("hsdfhsadfashjfd");
   const { ticc, iiddd, prrr } = req.body;
@@ -321,15 +259,12 @@ app.post("/passTicket", async (req, res) => {
     month: "long",
     day: "numeric",
   });
-  const timeString = currentDate.toLocaleTimeString("en-US");
 
   console.log(dateString);
-  console.log(timeString);
 
   data = {
     Bus_id: iiddd,
     Date: dateString,
-    Time: timeString,
     Price: prrr,
     Tickets: ticc,
   };
@@ -352,15 +287,12 @@ app.post("/normalTicket", async (req, res) => {
     month: "long",
     day: "numeric",
   });
-  const timeString = currentDate.toLocaleTimeString("en-US");
 
   console.log(dateString);
-  console.log(timeString);
 
   data11 = {
     Bus_id: iiddd,
     Date: dateString,
-    Time: timeString,
     Price: prrr,
     Tickets: ticc,
     Start: start,
