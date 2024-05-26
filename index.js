@@ -1,4 +1,4 @@
-// import express, { application } from "express";
+ // import express, { application } from "express";
 // import path from "path";
 // import mongoose from "mongoose";
 // import Razorpay from "razorpay";
@@ -312,8 +312,6 @@ app.post("/passTicket", async (req, res) => {
   console.log(ticc);
   console.log(iiddd);
   console.log(prrr);
-  // console.log(dateString);
-  // console.log(timeString);
 
   const currentDate = new Date();
 
@@ -345,6 +343,17 @@ app.post("/normalTicket", async (req, res) => {
   console.log(ticc);
   console.log(iiddd);
   console.log(prrr);
+
+  const currentDate = new Date();
+
+  const dateString = currentDate.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const timeString = currentDate.toLocaleTimeString("en-US");
+
   console.log(dateString);
   console.log(timeString);
 
