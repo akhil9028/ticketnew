@@ -1,0 +1,309 @@
+<!-- Kothrud -> Hadapsar   id=250 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Ticket</title>
+    <!-- <link rel="stylesheet" href="busticketingsystem.css" /> -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/cf268fac04.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>  
+    <div class="navbar">
+      <img src="images/logo4.png" alt="logo">
+      <a href="#" onclick="toggleDropdown()"><i class="fa-solid fa-bars fa-2xl"></i></a>
+      <div id="dropdown" class="dropdown-content">
+          <a href="index.html">Home</a>
+          <a href="about_us.html">About Us</a>
+          <a href="help2.html">Helpline</a>   
+      </div>
+  </div>
+             <h1 class="text1">Book Ticket</h1>
+
+    <div class="main">
+      <main class="app">
+       <div class="screen-wrap">
+        <section class="screen-home">
+         <div class="screen-home__form-wrap">
+          <div class="screen-home__form">
+           <form>
+            <div id="formdetail">
+             <div class="screen-home__location">
+              <div class="lable">
+               <figure class="icon"><img src="images/location (1).png"></figure>
+               <span class="text">Location Details</span>
+              </div>
+              <div class="input-wrap">
+               <div class="inside-wrap">
+                <div class="rotate-btn">
+                 <!-- <figure>
+                  <img src="images/rotate-btn.png">
+                 </figure> -->
+                </div>
+                <div class="from">
+                 <span class="inside-lable">From</span>
+                 <br>
+                 <!-- <select name="" class="input">
+                  <option value="Kothrud">Kothrud</option>
+                  <option value="Anand Nagar">Anand Nagar</option>
+                  <option value="Ideal Colony">Ideal Colony</option>
+                  <option value="Garware College">Garware College</option>
+                  <option value="Deccan Corner">Deccan Corner</option>
+                  <option value="Abhinav Chowk">Abhinav Chowk</option>
+                  <option value="Swargate">Swargate</option>
+                  <option value="Burger Camp">Burger Camp</option>
+                  <option value="Ramtekadi">Ramtekadi</option>
+                  <option value="Hadapsar">Hadapsar</option>
+                   </select> -->
+                   <button id="startlocation" value="Kothrud" class="input start" onclick="findMyState()" >Select Location</button>
+
+                </div>
+                <div class="to">
+                 <span class="inside-lable">To</span>
+                 <select name="" class="input toinput">
+                  <option id="startlocation" value="" disabled selected>Select Location </option>
+
+                  <option value="Kothrud">Kothrud</option>
+                  <option value="Anand Nagar">Anand Nagar</option>
+                  <option value="Ideal Colony">Ideal Colony</option>
+                  <option value="Garware College">Garware College</option>
+                  <option value="Deccan Corner">Deccan Corner</option>
+                  <option value="Abhinav Chowk">Abhinav Chowk</option>
+                  <option value="Swargate">Swargate</option>
+                  <option value="Burger Camp">Burger Camp</option>
+                  <option value="Ramtekadi">Ramtekadi</option>
+                  <option value="Hadapsar">Hadapsar</option>
+                   </select>
+                </div>
+               </div>
+              </div>
+             </div>
+             <div class="screen-home__date">
+              <div class="lable">
+               <figure class="icon1"><img src="images/beproject passenger.jpeg"></figure>
+               <span class="text">Passenger Details</span>
+              </div>
+              <!-- <div class="input-wrap"> -->
+               <div class="inside-wrap">
+               <!-- <div class="inside-lable-wrap"> -->
+                <!-- <div class="inside-lable-col"> -->
+                 <span class="inside-lable">
+                     <select name=""class="input">
+                         <option value="1">1 people</option>
+                         <option value="2">2 people</option>
+                         <option value="3">3 people</option>
+                         <option value="4">4 people</option>
+                         <option value="5">5 people</option>
+                         <option value="6">6 people</option>
+                         <option value="7">7 people</option>
+                         <option value="8">8 people</option>
+                       </select>
+                 </span>
+                <!-- </div>
+               </div>
+              </div> -->
+             </div>
+            </div>
+            <div class="screen-home__submit-wrap">
+             <span class="line"></span>
+     
+            </div>
+           </form>
+          </div>
+          <div class="screen-home__recent-search">
+           <div class="lable">
+            <figure class="icon2"><img src="images/payment.png"></figure>
+            <span class="text">Total Fair </span>
+           </div>
+           <div class="screen-home__rs-wrap">
+            <ul class="screen-home__rs-row">
+             <li class="screen-home__rs-col">
+              <div class="fare">
+                 Total Fare: <span id="fare">20</span><span>rs</span>
+               </div>
+             </li>
+            </ul>
+           </div>
+     
+
+        <!-- <button onclick="booknow()" class="pay">Pay</button> -->
+      </div>
+    </div>
+      </div>
+      <div class="rzpcontainer">
+        <button id="rzp-button1">Pay</button>
+      </div>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        // import sum from "./script.js";
+        // const fare2=require("./script.js");
+        // var fare=90;
+        // console.log("sum");
+              
+  var myFare="";
+  var myFrom="";
+  var myTo="";
+  var myPassenger="";
+
+        
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the select elements
+  const fromSelect = document.getElementById("startlocation");
+  const toSelect = document.querySelector('.to select');
+  const passengerSelect = document.querySelector('.screen-home__date select');
+  const fareElement = document.getElementById('fare');
+
+  // Add event listener for change event on select elements
+  [fromSelect, toSelect,passengerSelect].forEach(select => {
+    select.addEventListener('change', calculateFare);
+  });
+
+
+  function calculateFare() {
+    // Get the selected values
+    const fromLocation = fromSelect.value;
+    const toLocation = toSelect.value;
+    const passengers = passengerSelect.value;
+
+    myFrom=fromLocation;
+    myTo=toLocation;
+    myPassenger=passengers;
+
+    // Define fare rules based on from and to locations
+    const fareRules = {
+      "Kothrud": {
+        "Anand Nagar": 5,
+        "Ideal Colony": 5,
+        "Garware Collegei": 10,
+        "Deccan Corner": 10,
+        "Abhinav Chowk": 15,
+        "Swargate": 15,
+        "Burger Camp":15,
+        "Ramtekadi":20,
+        "Hadapsar":20,
+      },
+    };
+
+    // Check if fare rule exists for the selected locations
+    if (fareRules[fromLocation] && fareRules[fromLocation][toLocation]) {
+      // Calculate fare based on fare rule and number of passengers
+      var fare = fareRules[fromLocation][toLocation] * passengers;
+      // Update the fare element with the calculated fare
+      fareElement.textContent = fare;
+      myFare=fare;
+      console.log("fare "+fare);
+
+
+    } else {
+      // If no fare rule found, set default fare or display a message
+      fareElement.textContent = "Fare not available";
+    }
+  }
+});
+
+function getURLParameter(name) {
+  var urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+// console.log(fare);
+
+      document
+        .getElementById("rzp-button1")
+        .addEventListener("click", function () {
+          // Fetch the order ID from the server
+          fetch("/payment", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              amount: myFare, // Replace with the actual amount
+              currency: "INR",
+              // ... other required parameters
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const orderId = data.orderId;
+
+              const options = {
+                key: "rzp_test_xC9FgyFJ26fqQo", // Replace with your Razorpay Key ID
+                amount: myFare, // Amount in paise (replace with the actual amount)
+                currency: "INR",
+                name: "PMPML",
+                description: "Payment for Booking",
+                image:
+                  "https://yt3.googleusercontent.com/4OAJpaLaYpXKSEqVq1dwySLqoec1_IE2MlxchkbhkdhphkZPS3t2dtfgayEdVqIjTuFrdHTW=s900-c-k-c0x00ffffff-no-rj",
+                order_id: orderId, // Use the received order ID
+                handler: function (response) {
+                  // Handle the success response here
+                  console.log(response);
+                  window.location.href = "normalTicket.html?fare="+myFare+"&pass="+myPassenger+"&from="+myFrom+"&to="+myTo+"&id="+getURLParameter("id");
+                },
+                prefill: {
+                  name: "User Name",
+                  email: "user@example.com",
+                  contact: "9028305738",
+                  method: "", // Specify the preferred UPI method
+                },
+                notes: {
+                  address: "Your Address",
+                },
+                theme: {
+                  color: "#F37254",
+                },
+              };
+
+              const rzp = new Razorpay(options);
+              rzp.on("payment.success", function (response) {
+                const paymentData = {
+                  orderId: response.razorpay_order_id,
+                  paymentId: response.razorpay_payment_id,
+                  signature: response.razorpay_signature,
+                  amount: myFare,
+                  currency: "INR",
+                  // Add any other relevant payment details here
+                };
+
+                // Send payment data to your server for storing in MongoDB
+                fetch("/storePayment", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(paymentData),
+                })
+                  .then((response) => response.json())
+                  .then((data) => {
+                    console.log("Payment details stored successfully:", data);
+                    // Redirect or do any other actions after storing payment details
+                    window.location.href = "normalTicket.html";
+                  })
+                  .catch((error) => {
+                    console.error("Error storing payment details:", error);
+                  });
+              });
+              rzp.open();
+            })
+            .catch((error) => {
+              console.error("Error fetching order ID:", error);
+            });
+        });
+    </script>
+      
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Pass</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/cf268fac04.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="images/logo4.png" alt="sorry" />
+      <a href="#" onclick="toggleDropdown()"
+        ><i class="fa-solid fa-bars fa-2xl"></i
+      ></a>
+      <div id="dropdown" class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="help2.html">Helpline</a>
+      </div>
+    </div>
+
+    <div class="container3">
+      <h1>Daily Pass</h1>
+      <div class="dailyPass">
+        <span class="sp1"><b> 1 Mahanagar Palika </b></span>
+        <h2 class="upFair">Fare: 40</h2>
+
+        <div class="selectTickets">
+          <span>Select tickets</span>
+          <label for="">
+            <select
+              name=""
+              id="selectOptions1"
+              onchange="updateFare('selectOptions1', 'updateFair1', 40)"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <h2 class="upFair">
+            Total Fare: <span class="changeColor" id="updateFair1">40</span>
+          </h2>
+        </div>
+        <button
+          onclick="booknow(1)"
+          class="rzp-button3 clickdialypass1 qrformed bookButton"
+        >
+          Pay
+        </button>
+      </div>
+
+      <div class="dailyPass">
+        <span class="sp1"><b> 2 Mahanagar Palika </b></span>
+        <h2 class="upFair">Fare: 50</h2>
+
+        <div class="selectTickets">
+          <span>Select tickets</span>
+          <label for="">
+            <select
+              name=""
+              id="selectOptions2"
+              onchange="updateFare('selectOptions2', 'updateFair2', 50)"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <h2 class="upFair">
+            Total Fare: <span class="changeColor" id="updateFair2">50</span>
+          </h2>
+        </div>
+        <button
+          onclick="booknow(2)"
+          class="rzp-button3 clickdialypass1 qrformed bookButton"
+        >
+          Pay
+        </button>
+      </div>
+
+      <div class="dailyPass">
+        <span class="sp1"><b> Overall Pune </b></span>
+        <h2 class="upFair">Fare: 80</h2>
+        <div class="selectTickets">
+          <span>Select tickets</span>
+          <label for="">
+            <select
+              name=""
+              id="selectOptions3"
+              onchange="updateFare('selectOptions3', 'updateFair3', 80)"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <h2 class="upFair">
+            Total Fare: <span class="changeColor" id="updateFair3">80</span>
+          </h2>
+        </div>
+        <button
+          onclick="booknow(3)"
+          class="rzp-button3 clickdialypass1 qrformed bookButton"
+        >
+          Pay
+        </button>
+      </div>
+    </div>
+
+    // razorpay
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      var totalFare;
+      let selectOptions;
+      let selectedTickets;
+      let farePerTicket;
+      var num;
+
+      async function booknow(passId) {
+        num = passId;
+        var busid = urlParams.get("id");
+
+        // var passtickets = document.getElementById(
+        //   "selectOptions" + passId
+        // ).value;
+
+        selectOptions = document.getElementById("selectOptions" + num);
+
+        // Get the selected tickets
+        selectedTickets = parseInt(selectOptions.value);
+        console.log("selected " + selectedTickets);
+
+        // Calculate the total fare
+        farePerTicket = num === 1 ? 40 : num === 2 ? 50 : 80;
+        // Adjust fare based on passId
+        totalFare = selectedTickets * farePerTicket;
+
+        console.log("Bus Id" + totalFare);
+
+        console.log("helelllo" + num);
+
+        fetch("/payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            amount: totalFare, // Replace with the actual amount
+            currency: "INR",
+            // ... other required parameters
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const orderId = data.orderId;
+
+            const options = {
+              key: "rzp_test_xC9FgyFJ26fqQo", // Replace with your Razorpay Key ID
+              amount: totalFare, // Amount in paise (replace with the actual amount)
+              currency: "INR",
+              name: "PMPML",
+              description: "Payment for Booking",
+              image:
+                "https://yt3.googleusercontent.com/4OAJpaLaYpXKSEqVq1dwySLqoec1_IE2MlxchkbhkdhphkZPS3t2dtfgayEdVqIjTuFrdHTW=s900-c-k-c0x00ffffff-no-rj",
+              order_id: orderId, // Use the received order ID
+              handler: function (response) {
+                // Handle the success response here
+                console.log(response);
+                console.log(response);
+                // window.location.href = "passTicket.html";
+
+                window.location.href =
+                  "passTicket.html?tickets=" +
+                  selectedTickets +
+                  "&id=" +
+                  busid +
+                  "&totalFare=" +
+                  totalFare;
+
+                // getTickets();
+              },
+              prefill: {
+                name: "User Name",
+                email: "user@example.com",
+                contact: "9028305738",
+                method: "", // Specify the preferred UPI method
+              },
+              notes: {
+                address: "Your Address",
+              },
+              theme: {
+                color: "#F37254",
+              },
+            };
+
+            const rzp = new Razorpay(options);
+            rzp.on("payment.success", function (response) {
+              const paymentData = {
+                orderId: response.razorpay_order_id,
+                paymentId: response.razorpay_payment_id,
+                signature: response.razorpay_signature,
+                amount: totalFare,
+                currency: "INR",
+                // Add any other relevant payment details here
+              };
+
+              // Send payment data to your server for storing in MongoDB
+              fetch("/storePayment", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(paymentData),
+              })
+                .then((response) => response.json())
+                .then((data) => {
+                  console.log("Payment details stored successfully:", data);
+                  // Redirect or do any other actions after storing payment details
+                  window.location.href = "passTicket.html";
+                })
+                .catch((error) => {
+                  console.error("Error storing payment details:", error);
+                });
+            });
+            rzp.open();
+          })
+          .catch((error) => {
+            console.error("Error fetching order ID:", error);
+          });
+      }
+
+      function updateFare(selectId, spanId, price) {
+        var selectElement = document.getElementById(selectId);
+        var spanElement = document.getElementById(spanId);
+        var selectedTickets = selectElement.value;
+        var fare = selectedTickets * price;
+        spanElement.textContent = fare;
+      }
+
+      console.log("sdkljsalkkd");
+      const datt = document.querySelector(".upFair");
+      console.log(datt.innerHTML);
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

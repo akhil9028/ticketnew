@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus Ticket</title>
+    <link rel="stylesheet" href="passTicket.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/cf268fac04.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="images/logo4.png" alt="sbdhm" />
+      <a href="#" onclick="toggleDropdown()"
+        ><i class="fa-solid fa-bars fa-2xl"></i
+      ></a>
+      <div id="dropdown" class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="#">Helpline</a>
+      </div>
+    </div>
+
+    <div class="tic-flex">
+      <div class="ticket" id="invoice">
+        <img src="images/logo4.png" alt="logo" width="100 px" height="100px" />
+        <!-- <img class="buslogo" src="images/bus emoji.jfif" alt="bus" width="100px" height="100px"> -->
+        <div class="ticket-header">
+          <h2>Bus Pass</h2>
+        </div>
+        <div class="ticket-info">
+          <p>Bus Number :<span id="bus-id">XYZ123</span></p>
+          <p>Date :<span id="date">March 5, 2024</span></p>
+          <!-- <img id="cally"  src="images/calender.png" alt="calender" height="30px"  > -->
+          <p>Time: <span id="time">10:00 AM</span></p>
+          <p>Price: <span id="passPrice">$10.00</span></p>
+          <p>Tickets: <span id="tckkt">2</span></p>
+        </div>
+        <div class="ticket-valid">
+          <p><span>Valid Till:</span> 12:00 AM</p>
+        </div>
+        <div>
+          <img
+            id="myqr"
+            class="qr qr-codes"
+            src="images/qrOld.png"
+            alt="QR Code"
+            height="100px"
+            width="100px"
+            onload="generatePDF()"
+          />
+        </div>
+        <div class="helpline">
+          <p><span>Helpline Number:</span> 123-456-7890</p>
+        </div>
+      </div>
+
+      <button id="downloadBtn">Download Ticket</button>
+    </div>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+
+      var fare = urlParams.get("totalFare");
+      let tickets = urlParams.get("tickets");
+      let id = urlParams.get("id");
+
+      var qr = document.getElementById("myqr");
+
+      var qrImg = document.querySelector(".qr-codes");
+
+      var sum = fare + tickets + id;
+
+      url = "akhil9028.github.io/VerifyTicket/?totalFare=" + sum;
+
+      qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${url}`;
+
+      function generatePDF() {
+        document.getElementById("downloadBtn").addEventListener("click", () => {
+          const invoice = this.document.getElementById("invoice");
+          qr.src = "images/newqr.png";
+
+          html2pdf().from(invoice).save();
+        });
+      }
+
+      // generatePDF();
+
+      // let iddo = 299;
+      // let bus22 = document.getElementById("bus-id");
+
+      // let iddo = 0;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        let bus22 = document.getElementById("bus-id");
+
+        var ticcc = getURLParameter("tickets");
+        var iidd = getURLParameter("id");
+        var prr = getURLParameter("totalFare");
+
+        fetch("/passTicket", {
+          // iddo: bus22.textContent,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ticc: ticcc,
+            iiddd: iidd,
+            prrr: prr,
+            // ... other required parameters
+          }),
+        });
+      });
+
+      // fetch("/passTicket", {
+      //   // iddo: bus22.textContent,
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     iddee: bus22.textContent,
+      //     // ... other required parameters
+      //   }),
+      // });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

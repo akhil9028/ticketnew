@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Ubuntu:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/cf268fac04.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <img src="images/logo4.png" alt="sbdhm" />
+      <a href="#" onclick="toggleDropdown()"
+        ><i class="fa-solid fa-bars fa-2xl"></i
+      ></a>
+      <div id="dropdown" class="dropdown-content">
+        <a href="index.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="help2.html">Helpline</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="site-banner">
+        <div class="header-menu">
+          <span id="menu-icon" onClick="toggleMenu()"
+            ><img src="images/menu.svg"
+          /></span>
+          <!-- <span id="header-right-menu"> 
+					<a href="#">Our work</a> 
+					<a href="#">About</a> 
+					<a href="#">News</a>
+					<a href="#" class="header-active">Contact</a>
+				</span> -->
+        </div>
+      </div>
+      <div class="footer">
+        <!-- <div class="footer-column"><img class="map-image" src="images/punelocation.png" /></div> -->
+        <div class="footer-column">
+          <div class="tile-content">
+            <h1>Contact Us</h1>
+            <div class="contact-row">
+              <img class="help-logo" src="images/phone.jfif " /><span
+                class="tile-field"
+                >020-24379433/9881495589</span
+              >
+            </div>
+            <div class="contact-row">
+              <img
+                class="help-logo"
+                src="images/at-sign.png"
+                width="20px"
+                height="20px"
+              /><span class="tile-field">complaints@pmpml.org</span>
+            </div>
+            <div class="contact-row">
+              <img
+                class="help-logo"
+                src="images/map-pin.png"
+                width="50px"
+                height="20px"
+              /><span class="tile-field">PMT Building, Swargate, Pune </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        var menuElement = document.getElementById("header-right-menu");
+        if (menuElement.style.display === "block") {
+          menuElement.style.display = "none";
+        } else {
+          menuElement.style.display = "block";
+        }
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
