@@ -721,31 +721,85 @@ h2 {
 
 /*About Us*/
 
-.container8 {
+/* .container8 {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: justify;
-}
-
-.img8 img {
-  width: 500px;
-  margin-left: 1rem;
-  height: 500px;
-  object-fit: cover; /* This property ensures that the image covers the container while maintaining its aspect ratio */
+  width: 430px;
 }
 
 .content8 {
-  margin-right: 5rem;
-  margin-left: 5rem;
-  margin-top: 20px; /* Adjust the margin based on your preference */
-  max-width: 800px; /* Adjust the maximum width of the content */
+  
 }
 
-.content8 h1,
+.content8 h1{
+  margin-top: 3rem;
+  margin-left: -3.9rem;
+}
+.content8 h2{
+  margin-top: 3rem;
+  margin-left: -12.9rem;
+}
+.content8 p{
+  line-height: 1.5rem;
+} */
+
+.container8 {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content8 {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2 {
+  color: #333;
+}
 .content8 h2 {
-  text-align: center; /* Center headings */
-  margin-right: 5rem;
+  margin-right: 695px;
+}
+
+p {
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .container8 {
+    padding: 1rem;
+  }
+  h1 {
+    margin-left: -2px;
+  }
+  .content8 h2 {
+    width: 300px;
+    margin-left: 2px;
+    /* text-align: center */
+  }
+
+  .content8 {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container8 {
+    padding: 1.5rem;
+  }
+
+  .content8 {
+    padding: 1.5rem;
+  }
+  .content8 h2 {
+    width: 300px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -917,6 +971,7 @@ img {
 
 .tile-content {
   padding: 20px 40px;
+  width: 400px;
 }
 
 .tile-content .contact-row {
@@ -987,6 +1042,9 @@ img {
   #menu-icon {
     display: block;
     float: right;
+  }
+  #someid {
+    margin-left: 4rem;
   }
 }
 
@@ -1354,248 +1412,3 @@ button {
 } */
 
 /* Gen Ticket*/
-
-/* NEW ABOUT US */
-
-.container8 {
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.content8 {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-h1,
-h2 {
-  color: #333;
-}
-.content8 h2 {
-  margin-right: 695px;
-}
-
-p {
-  color: #666;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .container8 {
-    padding: 1rem;
-  }
-  h1 {
-    margin-left: -2px;
-  }
-
-  .content8 {
-    padding: 1rem;
-  }
-  .content8 h2 {
-    width: 300px;
-    margin-left: 2px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .container8 {
-    padding: 1.5rem;
-  }
-  .content8 h2 {
-    width: 300px;
-  }
-  .content8 {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .container5 {
-    width: 90%;
-    margin: 20px auto;
-    padding: 10px;
-  }
-
-  .top5 h1 {
-    padding: 0.5rem;
-  }
-
-  .middle5 {
-    padding: 10px;
-  }
-
-  .middle5 h2 {
-    margin: 5px 0;
-  }
-
-  .middle5 span {
-    margin-left: 0;
-    display: block; /* Display span as block to take full width on smaller screens */
-    text-align: center;
-  }
-
-  #ticket,
-  #source,
-  #Destination,
-  #rs {
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .bottom5 button {
-    font-size: 1rem;
-    height: 4rem;
-  }
-}
-
-/* NEW HELP  */
-
-.container {
-  max-width: 1180px;
-  margin: 0 auto;
-  line-height: 1.5;
-}
-/*  header style starts */
-.site-banner {
-  min-height: 400px;
-  background-image: url("images/pmpml_bus_bg.jpeg");
-  background-size: cover;
-  background-position: center;
-  color: #ffffff;
-}
-
-.site-banner a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 12px;
-}
-
-.header-menu {
-  padding: 40px 20px;
-}
-
-#header-right-menu {
-  float: right;
-}
-
-.header-active {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 25px;
-}
-
-.heading {
-  color: #ffffff;
-  text-align: center;
-  font-family: cursive;
-  padding: 40px 0px;
-  font-size: 3em;
-  margin: 0px;
-}
-/*  header style ends */
-
-.footer {
-  display: flex;
-}
-
-.footer-column {
-  width: 33.3%;
-  float: left;
-}
-.map-image {
-  width: 100%;
-  height: 100%;
-}
-
-#contact-info {
-  margin-top: 1rem;
-}
-.contact-form-container {
-  background-color: #eaeaea;
-}
-
-img {
-  vertical-align: middle;
-}
-
-.tile-content {
-  padding: 20px 40px;
-}
-
-.tile-content .contact-row {
-  margin-bottom: 20px;
-}
-
-.tile-field {
-  margin-left: 20px;
-}
-.help-logo {
-  width: 30px;
-  height: 30px;
-  /* margin-bottom: 1rem; */
-}
-
-.form-field {
-  width: 100%;
-  padding: 10px 8px;
-  border-radius: 4px;
-  border: #d9d8d8 1px solid;
-}
-
-.button {
-  color: #ffffff;
-  padding: 10px 30px 10px 30px;
-  border-radius: 20px;
-  background: linear-gradient(to right, #08a9df, #12054a);
-  border: 0px;
-  cursor: pointer;
-}
-
-#menu-icon {
-  display: none;
-  float: right;
-}
-#someid {
-  margin-left: 1rem;
-}
-
-@media screen and (max-width: 1000px) {
-  .footer-column {
-    width: 50%;
-  }
-  .contact-form-container {
-    width: 100%;
-  }
-  .footer {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  #header-right-menu {
-    float: none;
-    display: none;
-  }
-  #header-right-menu a {
-    display: block;
-  }
-  .heading {
-    padding: 0px;
-  }
-  .tile-content {
-    padding: 20px 40px;
-    width: 800px;
-  }
-
-  .footer-column {
-    width: 100%;
-  }
-
-  #menu-icon {
-    display: block;
-    float: right;
-  }
-}
